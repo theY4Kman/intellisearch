@@ -190,3 +190,9 @@ describe('extraWordBoundaries escaping', () => {
     );
   });
 });
+
+describe('readonly haystacks', () => {
+  it('accepts a readonly array (const assertion)', () => {
+    expect(intelliSearch('a', ['a', 'b'] as const)).toEqual(['a']);
+  });
+});

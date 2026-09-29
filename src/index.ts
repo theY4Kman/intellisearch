@@ -137,7 +137,7 @@ export class SearchResult<V> {
  */
 export const intelliSearchEx = function intelliSearchEx<V extends { toString(): string }>(
   query: string,
-  haystack: V[],
+  haystack: readonly V[],
   {
     extractText = (o) => o.toString(),
     extraWordBoundaries,
@@ -203,7 +203,7 @@ export const intelliSearchEx = function intelliSearchEx<V extends { toString(): 
  */
 export const intelliSearch = function intelliSearch<V extends { toString(): string }>(
   query: string,
-  haystack: V[],
+  haystack: readonly V[],
   options?: IntelliSearchConfig<V>,
 ): V[] {
   return intelliSearchEx(query, haystack, options).map((result) => result.object);
