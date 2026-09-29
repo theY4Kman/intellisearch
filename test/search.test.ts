@@ -169,3 +169,20 @@ describe('adjacent fragment merging', () => {
     ).toBe(results[0].text);
   });
 });
+
+describe('extraWordBoundaries escaping', () => {
+  it('accepts regex metacharacters in words', () => {
+    const results = intelliSearchEx('cb', ['C++Builder', 'cobol'], {
+      extraWordBoundaries: ['c++ builder'],
+    });
+    expect(results.map((r) => r.object)).toEqual(['C++Builder']);
+    expect(results[0].text).toBe(`C++${ZWSP}Builder`);
+  });
+
+  it('matches words literally, not as patterns', () => {
+    expect(intelliSearch('ab', ['axbc'], { extraWordBoundaries: ['a. bc'] })).toEqual([]);
+    expect(intelliSearchEx('ab', ['a.bc'], { extraWordBoundaries: ['a. bc'] })[0].text).toBe(
+      `a.${ZWSP}bc`,
+    );
+  });
+});

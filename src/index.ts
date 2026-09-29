@@ -1,4 +1,5 @@
 const ZWSP = '\u200B';
+const escapeRegExp = (text: string): string => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 export type IntelliSearchConfig<V> = {
   extractText?: (object: V) => string;
@@ -128,7 +129,7 @@ export const intelliSearchEx = function intelliSearchEx<V extends { toString(): 
     // ['firstWord', 'second', 'third']
     const validWordLists = extraWordBoundaries
       .map((spaceDelimitedWords) => {
-        const words = spaceDelimitedWords.split(/\s+/).filter(Boolean);
+        const words = spaceDelimitedWords.split(/\s+/).filter(Boolean).map(escapeRegExp);
         if (words.length <= 1) return null;
         return words;
       })
