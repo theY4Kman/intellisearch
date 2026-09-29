@@ -294,7 +294,7 @@ class MiniMatcher extends Matcher {
         }
 
         const c: string = name.charAt(i);
-        p = this.pattern.substring(p + 1).indexOf(c);
+        p = this.indexOfIgnoreCaseFrom(c, p + 1);
         if (p < 0) {
           break;
         }
@@ -327,6 +327,21 @@ class MiniMatcher extends Matcher {
       (startMatch ? 1 : 0) +
       (finalMatch ? 1 : 0)
     );
+  }
+
+  /**
+   * Find the first index >= fromIndex in the pattern whose character equals `c`, ignoring case.
+   * Returns -1 if there is no such index.
+   */
+  private indexOfIgnoreCaseFrom(c: string, fromIndex: number): number {
+    const cUpper = c.toUpperCase();
+    const cLower = c.toLowerCase();
+    for (let i = fromIndex; i < this.pattern.length; i++) {
+      if (this.pattern[i] == c || this.toUpperCase[i] == cUpper || this.toLowerCase[i] == cLower) {
+        return i;
+      }
+    }
+    return -1;
   }
 
   private evaluateCaseMatching(

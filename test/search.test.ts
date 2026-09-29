@@ -65,8 +65,8 @@ describe('intelliSearch', () => {
 describe('intelliSearchEx', () => {
   it('orders results by matchingDegree', () => {
     expect(intelliSearchEx('CU', ['CurrentUser', 'cursor', 'Cup']).map((r) => r.text)).toEqual([
-      'Cup',
       'CurrentUser',
+      'Cup',
       'cursor',
     ]);
     expect(intelliSearchEx('cu', ['CurrentUser', 'cursor', 'Cup']).map((r) => r.text)).toEqual([
@@ -81,6 +81,10 @@ describe('intelliSearchEx', () => {
     expect(matched(intelliSearchEx('cuser', ['CurrentUser'])[0])).toEqual(['C', 'User']);
     expect(matched(intelliSearchEx('curus', ['CurrentUser'])[0])).toEqual(['Cur', 'Us']);
     expect(matched(intelliSearchEx('abc', ['a_b_c'])[0])).toEqual(['a', 'b', 'c']);
+  });
+
+  it('ranks hump-start matches above prefix matches for uppercase query letters', () => {
+    expect(intelliSearch('CU', ['Cup', 'CurrentUser'])[0]).toBe('CurrentUser');
   });
 
   it('exposes the original object', () => {

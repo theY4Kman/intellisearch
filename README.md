@@ -20,7 +20,7 @@ Ships ESM and CommonJS builds with TypeScript types, and has zero dependencies.
 import { intelliSearch } from 'intellisearch';
 
 intelliSearch('CU', ['CurrentUser', 'cursor', 'Cup', 'Other']);
-// => ['Cup', 'CurrentUser', 'cursor']
+// => ['CurrentUser', 'Cup', 'cursor']
 ```
 
 Search objects by extracting the text to match against with `extractText`:
@@ -59,7 +59,7 @@ digits), or the first character after a separator (`space _ - : + . ( ) [ ]`). T
 
 Results are sorted best match first, using IntelliJ's matching degree — matches that start at the
 beginning of the text, cover consecutive humps, and match case rank higher. Uppercase letters in the
-query are treated as a hint to prefer hump starts, so `CU` ranks `Cup` above `CurrentUser`.
+query are treated as a hint to prefer hump starts, so `CU` ranks `CurrentUser` above `Cup`.
 
 An empty query matches nothing.
 
