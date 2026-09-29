@@ -53,9 +53,10 @@ nodes, never parsed as markup, so it's safe to render untrusted input.
 
 ## How matching works
 
-A match must begin at a word start: the first letter, a CamelHump (an uppercase letter, or a run of
-digits), or the first character after a separator (`space _ - : + . ( ) [ ]`). This is why `bar` matches
-`foo bar` and `barfoo`, but not `foobar`.
+A match must begin at a word start: the first letter of the text, a CamelHump (an uppercase letter, or a
+run of digits), or the first letter or digit after any non-alphanumeric character (space, `_`, `-`, `/`,
+`.`, `@`, and so on). This is why `bar` matches `foo bar`, `barfoo`, `foo/bar`, and `foo@bar`, but not
+`foobar`.
 
 Results are sorted best match first, using IntelliJ's matching degree — matches that start at the
 beginning of the text, cover consecutive humps, and match case rank higher. Uppercase letters in the
