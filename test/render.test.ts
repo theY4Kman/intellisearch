@@ -16,7 +16,7 @@ describe('SearchResult.renderToHtml', () => {
 
   it('replaces spaces with non-breaking spaces when preventWrap is set', () => {
     const el = intelliSearchEx('bar', ['foo bar'])[0].renderToHtml({ preventWrap: true });
-    expect(el.textContent).toBe('foo bar');
+    expect(el.textContent).toBe('foo\u00a0bar');
   });
 
   it('renders item text as text, never as markup', () => {

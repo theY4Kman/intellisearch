@@ -354,7 +354,7 @@ class MiniMatcher extends Matcher {
 
   private prependRange(ranges: TextRange[], from: number, length: number) {
     if (ranges.length && ranges[0].startOffset == from + length) {
-      return ranges.concat(new TextRange(from, ranges[0].endOffset));
+      return [new TextRange(from, ranges[0].endOffset), ...ranges.slice(1)];
     }
     return [TextRange.from(from, length), ...ranges];
   }

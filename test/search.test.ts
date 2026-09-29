@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { intelliSearch, intelliSearchEx, type SearchResult } from '../src/index';
 
-const ZWSP = '​';
+const ZWSP = '\u200b';
 
 /** Strings of the fragments that matched the query */
 // `any`, not `unknown`: SearchResult<V> is invariant in V (config.extractText takes a V)
@@ -134,5 +134,38 @@ describe('SearchResult', () => {
   it('derive() applies extraWordBoundaries', () => {
     const [result] = intelliSearchEx('ms', ['Microsoft'], { extraWordBoundaries: ['micro soft'] });
     expect(result.derive('Microsoft Word')?.text).toBe(`Micro${ZWSP}soft Word`);
+  });
+});
+
+describe('adjacent fragment merging', () => {
+  it('merges adjacent ranges instead of duplicating them', () => {
+    const [result] = intelliSearchEx('FOO_BAR', ['foo_bar']);
+    expect(result.matchingRanges).toEqual([{ startOffset: 0, endOffset: 7 }]);
+    expect(result.allFragments()).toEqual([['foo_bar', true]]);
+  });
+
+  it('merges across a space', () => {
+    const [result] = intelliSearchEx('A B', ['a b']);
+    expect(result.allFragments()).toEqual([['a b', true]]);
+  });
+
+  it.each([
+    ['FOO_BAR', 'foo_bar'],
+    ['A_X', 'a_x'],
+    ['A B', 'a b'],
+    ['CU', 'CurrentUser'],
+    ['cuser', 'CurrentUser'],
+    ['abc', 'a_b_c'],
+    ['fb', 'foo-bar'],
+    ['bar', 'foo bar'],
+  ])('fragments of %j against %j reconstruct the text exactly', (query, text) => {
+    const results = intelliSearchEx(query, [text]);
+    expect(results).toHaveLength(1);
+    expect(
+      results[0]
+        .allFragments()
+        .map(([fragment]) => fragment)
+        .join(''),
+    ).toBe(results[0].text);
   });
 });
