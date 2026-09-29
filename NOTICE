@@ -1,0 +1,38 @@
+intellisearch
+Copyright 2026 Zach "theY4Kman" Kanzler
+
+This product includes software derived from the IntelliJ Platform
+(https://github.com/JetBrains/intellij-community), Copyright 2000-2020
+JetBrains s.r.o., licensed under the Apache License, Version 2.0. The
+following sources were translated to TypeScript and modified:
+
+  - MinusculeMatcherImpl.java
+    https://github.com/JetBrains/intellij-community/blob/e968f719dc8fab5d1e0ef37abc7103245cc4ebde/platform/util/text-matching/src/com/intellij/psi/codeStyle/MinusculeMatcherImpl.java
+  - TextRange.java
+    https://github.com/JetBrains/intellij-community/blob/2052503d12e631cb33d320fba579c53a23f84049/platform/util/base/src/com/intellij/openapi/util/TextRange.java
+  - NameUtilCore.java (isWordStart, nextWord)
+    https://github.com/JetBrains/intellij-community/blob/0311a6f6f09de2da0c002c220362ca74ffda5aab/platform/util/base/src/com/intellij/util/text/NameUtilCore.java
+
+The intellij-community NOTICE file reads:
+
+  This software includes code from IntelliJ IDEA
+  Copyright (C) JetBrains s.r.o.
+  https://www.jetbrains.com/idea/
+
+This product includes code adapted from PureHelpers
+(https://github.com/KooiInc/PureHelpers) by Renzo Kooi, licensed under the
+ISC License:
+
+  Copyright (c) Renzo Kooi
+
+  Permission to use, copy, modify, and/or distribute this software for any
+  purpose with or without fee is hereby granted, provided that the above
+  copyright notice and this permission notice appear in all copies.
+
+  THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+  WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+  MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+  ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+  ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
