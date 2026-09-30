@@ -3,7 +3,7 @@
 IntelliJ-style "CamelHumps" search for JS/TS — a TypeScript port of IntelliJ IDEA's `MinusculeMatcher`.
 
 [![npm version](https://img.shields.io/npm/v/intellisearch)](https://www.npmjs.com/package/intellisearch)
-[![CI](https://github.com/they4kman/intellisearch/actions/workflows/ci.yml/badge.svg)](https://github.com/they4kman/intellisearch/actions/workflows/ci.yml)
+[![CI](https://github.com/theY4Kman/intellisearch/actions/workflows/ci.yml/badge.svg)](https://github.com/theY4Kman/intellisearch/actions/workflows/ci.yml)
 [![license](https://img.shields.io/npm/l/intellisearch)](LICENSE)
 
 ## Install

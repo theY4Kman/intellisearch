@@ -16,11 +16,11 @@
   "author": "Zach \"theY4Kman\" Kanzler",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/they4kman/intellisearch.git"
+    "url": "git+https://github.com/theY4Kman/intellisearch.git"
   },
-  "homepage": "https://github.com/they4kman/intellisearch#readme",
+  "homepage": "https://github.com/theY4Kman/intellisearch#readme",
   "bugs": {
-    "url": "https://github.com/they4kman/intellisearch/issues"
+    "url": "https://github.com/theY4Kman/intellisearch/issues"
   },
   "type": "module",
   "main": "./dist/index.cjs",
